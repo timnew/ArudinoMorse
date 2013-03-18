@@ -1,9 +1,14 @@
-int ledPin = 3;
-int buttonPin = 7;
-int T;
-String text;
+#include "Morse.h"
+
+Morse morse(3);
+
+void setup() {
+  morse.setup();
+  morse.hookCallback(&readInput);
+
+}
 
 void loop() {  
-  displayText();
+  morse.displayText();
 }
 

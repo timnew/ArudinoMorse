@@ -1,10 +1,14 @@
-void displayText() {
-  int index = 0;
+#include "Morse.h"
+
+void Morse::displayText() {
   int length = text.length();
 
-  for(index = 0 ; index < length; index ++) {
+  Serial.println(text);
+  
+  for(int index = 0 ; index < length; index ++) {
     displayChar(text.charAt(index));
   }
+  
   space();  
 }
 
@@ -50,7 +54,7 @@ char numbers[][10] = {
  "----." // 9 
 };
 
-char* translateChar(char c) {
+char* Morse::translateChar(char c) {
   if (c == ' ')
     return " ";
   else if (c >= 'A' && c <= 'Z')
@@ -61,11 +65,10 @@ char* translateChar(char c) {
     return "X";
 }
 
-void displayChar(char c) {
+void Morse::displayChar(char c) {
   char* toDisplay = translateChar(c);
-  char* current;
 
-  for(current = toDisplay; *current != '\0'; current++) {
+  for(char* current = toDisplay; *current != '\0'; current++) {
     switch(*current) {
       case ' ':
         space();
@@ -78,7 +81,7 @@ void displayChar(char c) {
         break;
       default:
         Serial.print("Unkown letter: ");
-        Serial.println(c);
+        Serial.println(c, HEX);
         return;
     }  
   }

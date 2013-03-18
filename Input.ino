@@ -34,7 +34,7 @@ void readFrequency() {
    
    Serial.println("Okay");
    
-   setupFrequency(f);  
+   morse.setFrequency(f);  
 }
 
 void readText() {
@@ -45,7 +45,7 @@ void readText() {
      
    String t = readString(';');
    Serial.println("Okay");
-   setupText(t);
+   morse.setText(t);
 }
 
 void readInput(){
